@@ -833,9 +833,11 @@ showToc: true
 
 
 
-　　机器学习模型训练的目的，就是使得参数尽可能的与真实的模型逼近。具体做法是这样的。首先给所有参数赋上随机值。我们使用这些随机生成的参数值，来预测训练数据中的样本。样本的预测目标为$\\hat y$，真实目标为y。那么，定义一个值loss，计算公式（单个预测）如下。（这其实就是MSE公式）
+　　机器学习模型训练的目的，就是使得参数尽可能的与真实的模型逼近。具体做法是这样的。首先给所有参数赋上随机值。我们使用这些随机生成的参数值，来预测训练数据中的样本。样本的预测目标为$\hat{y}$，真实目标为y。那么，定义一个值loss，计算公式（单个预测）如下。（这其实就是MSE公式）
 
-$$loss=(\\hat y-y)^2$$
+$$
+loss=(\hat{y}-y)^2
+$$
 
 
 
@@ -843,11 +845,14 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-> 更常用的是交叉熵损失函数：
-
-> $$
-> \\mathrm{Loss}(\\mathrm{w}, \\mathrm{b})=-\\sum_{\\mathrm{i}=1}^{\\mathrm{m}}(\\mathrm{y} \\log \\widehat{\\mathrm{y}}+(1-\\mathrm{y}) \\log (1-\\widehat{\\mathrm{y}}))
-> $$
+<blockquote>
+<p>更常用的是交叉熵损失函数：</p>
+<div>
+$$
+\mathrm{Loss}(\mathrm{w}, \mathrm{b})=-\sum_{\mathrm{i}=1}^{\mathrm{m}}(\mathrm{y}\log\widehat{\mathrm{y}}+(1-\mathrm{y})\log(1-\widehat{\mathrm{y}}))
+$$
+</div>
+</blockquote>
 
 
 
