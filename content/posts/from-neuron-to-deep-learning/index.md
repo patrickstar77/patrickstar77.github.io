@@ -846,9 +846,7 @@ $$loss=(\\hat y-y)^2$$
 > 更常用的是交叉熵损失函数：
 
 > $$
-
 > \\mathrm{Loss}(\\mathrm{w}, \\mathrm{b})=-\\sum_{\\mathrm{i}=1}^{\\mathrm{m}}(\\mathrm{y} \\log \\widehat{\\mathrm{y}}+(1-\\mathrm{y}) \\log (1-\\widehat{\\mathrm{y}}))
-
 > $$
 
 
