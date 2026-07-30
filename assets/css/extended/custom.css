@@ -1,5 +1,10 @@
 :root {
   --main-width: 760px;
+  --content-link: #1d4ed8;
+}
+
+:root[data-theme="dark"] {
+  --content-link: #7dd3fc;
 }
 
 .home-info .entry-content {
@@ -20,6 +25,31 @@
 
 .post-content blockquote blockquote {
   font-size: inherit;
+}
+
+.post-content a:not(.anchor) {
+  color: var(--content-link);
+  font-weight: 500;
+  text-decoration-color: currentcolor;
+  text-decoration-thickness: 1px;
+}
+
+.post-content
+  :is(a[href^="http://"], a[href^="https://"]):not(.anchor):not(:has(img))::after {
+  display: inline-block;
+  margin-inline-start: 0.16em;
+  font-size: 0.72em;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: 0.34em;
+  content: "↗";
+  transition: transform 0.15s ease;
+}
+
+.post-content
+  :is(a[href^="http://"], a[href^="https://"]):not(.anchor):not(:has(img)):hover::after {
+  transform: translate(1px, -1px);
 }
 
 .post-content img {
@@ -449,6 +479,11 @@ mark.search-hit.search-hit--current {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .post-content
+    :is(a[href^="http://"], a[href^="https://"]):not(.anchor):not(:has(img))::after {
+    transition: none;
+  }
+
   .search-hit-nav__button {
     transition: none;
   }
