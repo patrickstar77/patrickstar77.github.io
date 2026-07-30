@@ -21,7 +21,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181123830-467955580.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/001.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -29,7 +29,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -37,7 +37,7 @@ showToc: true
 
 
 
-# **一. 前言**
+## 一. 前言
 
 
 
@@ -45,7 +45,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181124323-59383735.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/002.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -53,7 +53,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -73,7 +73,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181124789-45562946.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/003.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -81,7 +81,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -93,15 +93,15 @@ showToc: true
 
 
 
-&#x20;
 
 
 
-# **二. 神经元**
+
+## 二. 神经元
 
 
 
-## 　　**1.引子**　
+### 1. 引子
 
 
 
@@ -117,7 +117,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181141649-1028766867.png" alt="img" style="zoom: 67%;" /></center>
+<center><img src="images/044.png" alt="img" style="zoom: 67%;" /></center>
 
 
 
@@ -125,15 +125,15 @@ showToc: true
 
 
 
-&#x20;
 
 
 
-&#x20;　1943年，心理学家McCulloch和数学家Pitts参考了生物神经元的结构，发表了抽象的神经元模型-MP模型（首字母缩写）。在下文中，我们会具体介绍神经元模型。
+
+　1943年，心理学家McCulloch和数学家Pitts参考了生物神经元的结构，发表了抽象的神经元模型-MP模型（首字母缩写）。在下文中，我们会具体介绍神经元模型。
 
 
 
-<img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181125163-1411558656.png" alt="img" style="zoom:50%;" />   <img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181125481-1612540751.png" alt="img" style="zoom:45%;" />
+<img src="images/004.png" alt="img" style="zoom:50%;" />   <img src="images/005.png" alt="img" style="zoom:45%;" />
 
 
 
@@ -141,7 +141,7 @@ showToc: true
 
 
 
-## 　　**2.结构** 
+### 2. 结构
 
 
 
@@ -157,7 +157,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181123830-467955580.png" alt="img" style="zoom:67%;" /></center>
+<center><img src="images/001.png" alt="img" style="zoom:67%;" /></center>
 
 
 
@@ -165,7 +165,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -185,7 +185,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181125791-380106173.png" alt="img" style="zoom:80%;" /></center>
+<center><img src="images/006.png" alt="img" style="zoom:80%;" /></center>
 
 
 
@@ -193,7 +193,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -201,7 +201,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181126139-586571454.png" alt="img" style="zoom: 50%;" /></center>
+<center><img src="images/007.png" alt="img" style="zoom: 50%;" /></center>
 
 
 
@@ -209,7 +209,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -225,7 +225,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181126499-1746864235.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/008.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -233,7 +233,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -241,7 +241,7 @@ showToc: true
 
 
 
-## 　　**3.效果** 
+### 3. 效果
 
 
 
@@ -261,7 +261,7 @@ showToc: true
 
 
 
-## 　　**4.影响**
+### 4. 影响
 
 
 
@@ -273,7 +273,7 @@ showToc: true
 
 
 
-<img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181126840-828862262.gif" alt="img" style="zoom: 67%;" />
+<img src="images/009.gif" alt="img" style="zoom: 67%;" />
 
 
 
@@ -281,7 +281,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -289,15 +289,15 @@ showToc: true
 
 
 
-&#x20;
 
 
 
-# **三. 单层神经网络（感知器）**
+
+## 三. 单层神经网络（感知器）
 
 
 
-## 　　**1.引子**　　
+### 1. 引子
 
 
 
@@ -313,7 +313,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181127149-1722929930.png" alt="img" style="zoom:80%;" /></center>
+<center><img src="images/010.png" alt="img" style="zoom:80%;" /></center>
 
 
 
@@ -321,7 +321,7 @@ showToc: true
 
 
 
-## 　　**2.结构**
+### 2. 结构
 
 
 
@@ -333,7 +333,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181127497-808363340.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/011.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -341,7 +341,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -361,7 +361,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181127856-168572272.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/012.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -369,7 +369,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -381,7 +381,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181128243-629960368.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/013.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -389,7 +389,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -401,7 +401,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181128618-260033075.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/014.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -409,7 +409,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -425,7 +425,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181129039-592875085.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/015.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -433,7 +433,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -465,7 +465,7 @@ showToc: true
 
 
 
-## 　　**3.效果**
+### 3. 效果
 
 
 
@@ -481,7 +481,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181129348-1077885253.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/016.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -493,7 +493,7 @@ showToc: true
 
 
 
-## 　　**4.影响**　
+### 4. 影响
 
 
 
@@ -509,7 +509,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181129667-1030858395.png" alt="img" style="zoom: 80%;" /></center>  
+<center><img src="images/017.png" alt="img" style="zoom: 80%;" /></center>
 
 
 
@@ -529,15 +529,15 @@ showToc: true
 
 
 
-&#x20;
 
 
 
-# **四. 两层神经网络（多层感知器）**
+
+## 四. 两层神经网络（多层感知器）
 
 
 
-## 　　**1.引子**
+### 1. 引子
 
 
 
@@ -557,7 +557,7 @@ showToc: true
 
 
 
-<img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181130029-2021119547.png" alt="img" style="zoom:50%;" /><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181130493-471033412.png" alt="img" style="zoom:35%;" />
+<img src="images/018.png" alt="img" style="zoom:50%;" /><img src="images/019.png" alt="img" style="zoom:35%;" />
 
 
 
@@ -565,11 +565,11 @@ showToc: true
 
 
 
-&#x20;
 
 
 
-## 　　**2.结构**
+
+### 2. 结构
 
 
 
@@ -585,11 +585,11 @@ showToc: true
 
 
 
-　　例如$a\_x^{(y)}$ 代表第y层的第x个节点。z1，z2变成了$a\_1^{(2)},a\_2^{(2)}$。下图给出了$a\_1^{(2)},a\_2^{(2)}$的计算公式。
+　　例如$a_x^{(y)}$ 代表第y层的第x个节点。z1，z2变成了$a_1^{(2)},a_2^{(2)}$。下图给出了$a_1^{(2)},a_2^{(2)}$的计算公式。
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181130911-1181575248.png" alt="img" style="zoom: 67%;" /></center>
+<center><img src="images/020.png" alt="img" style="zoom: 67%;" /></center>
 
 
 
@@ -601,11 +601,11 @@ showToc: true
 
 
 
-　　计算最终输出z 的方式是利用了中间层的$a\_1^{(2)},a\_2^{(2)}$ 和第二个权值矩阵计算得到的，如下图。
+　　计算最终输出z 的方式是利用了中间层的$a_1^{(2)},a_2^{(2)}$ 和第二个权值矩阵计算得到的，如下图。
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181131291-2135618996.png" alt="img" style="zoom:67%;" /></center>
+<center><img src="images/021.png" alt="img" style="zoom:67%;" /></center>
 
 
 
@@ -613,7 +613,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -625,7 +625,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181131655-1206304487.png" alt="img" style="zoom:67%;" /></center>
+<center><img src="images/022.png" alt="img" style="zoom:67%;" /></center>
 
 
 
@@ -633,7 +633,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -669,7 +669,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181132032-1406985660.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/023.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -677,7 +677,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -709,7 +709,7 @@ showToc: true
 
 
 
-> <font color='red'>**疑问：**!!!!!这里的Sigmoid的作用是什么，仅仅是为了将输出值的无限范围映射到0\~1之间吗？而且前面的那么多矩阵相乘，应该都是不断在对输入值做线性组合吧？</font>
+> <font color='red'>**疑问：**!!!!!这里的Sigmoid的作用是什么，仅仅是为了将输出值的无限范围映射到0~1之间吗？而且前面的那么多矩阵相乘，应该都是不断在对输入值做线性组合吧？</font>
 
 >
 
@@ -721,7 +721,7 @@ showToc: true
 
 
 
-## 　　**3.效果**
+### 3. 效果
 
 
 
@@ -745,7 +745,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181132361-1216030272.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/024.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -765,7 +765,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181132737-1600692023.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/025.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -773,7 +773,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -805,7 +805,7 @@ showToc: true
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181133180-1467101730.png" alt="img" style="zoom: 33%;" /></center>
+<center><img src="images/026.png" alt="img" style="zoom: 33%;" /></center>
 
 
 
@@ -813,7 +813,7 @@ showToc: true
 
 
 
-&#x20;
+
 
 
 
@@ -821,7 +821,7 @@ showToc: true
 
 
 
-## 　　**4.训练**
+### 4. 训练
 
 
 
@@ -847,7 +847,7 @@ $$loss=(\\hat y-y)^2$$
 
 > $$
 
-> \\mathrm{Loss}(\\mathrm{w}, \\mathrm{b})=-\\sum\_{\\mathrm{i}=1}^{\\mathrm{m}}(\\mathrm{y} \\log \\widehat{\\mathrm{y}}+(1-\\mathrm{y}) \\log (1-\\widehat{\\mathrm{y}}))
+> \\mathrm{Loss}(\\mathrm{w}, \\mathrm{b})=-\\sum_{\\mathrm{i}=1}^{\\mathrm{m}}(\\mathrm{y} \\log \\widehat{\\mathrm{y}}+(1-\\mathrm{y}) \\log (1-\\widehat{\\mathrm{y}}))
 
 > $$
 
@@ -869,7 +869,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181133590-1546586107.png" alt="img" style="zoom: 50%;" /></center>
+<center><img src="images/027.png" alt="img" style="zoom: 50%;" /></center>
 
 
 
@@ -877,7 +877,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -889,7 +889,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**5.影响**
+### 5. 影响
 
 
 
@@ -909,7 +909,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181133937-385501059.png" alt="img" style="zoom: 67%;" />
+<img src="images/028.png" alt="img" style="zoom: 67%;" />
 
 
 
@@ -917,7 +917,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -925,15 +925,15 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-# **五. 多层神经网络（深度学习）**
+
+## 五. 多层神经网络（深度学习）
 
 
 
-## 　　**1.引子**　　
+### 1. 引子
 
 
 
@@ -945,7 +945,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;　很快，深度学习在语音识别领域暂露头角。接着，2012年，深度学习技术又在图像识别领域大展拳脚。Hinton与他的学生在ImageNet竞赛中，用多层的卷积神经网络成功地对包含一千类别的一百万张图片进行了训练，取得了分类错误率15%的好成绩，这个成绩比第二名高了近11个百分点，充分证明了多层神经网络识别效果的优越性。
+　很快，深度学习在语音识别领域暂露头角。接着，2012年，深度学习技术又在图像识别领域大展拳脚。Hinton与他的学生在ImageNet竞赛中，用多层的卷积神经网络成功地对包含一千类别的一百万张图片进行了训练，取得了分类错误率15%的好成绩，这个成绩比第二名高了近11个百分点，充分证明了多层神经网络识别效果的优越性。
 
 
 
@@ -953,7 +953,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181134274-1460567645.png" alt="img" style="zoom: 50%;" />
+<img src="images/029.png" alt="img" style="zoom: 50%;" />
 
 
 
@@ -961,7 +961,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -969,7 +969,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**2.结构**
+### 2. 结构
 
 
 
@@ -981,7 +981,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181134640-829410519.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/030.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -989,7 +989,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1025,7 +1025,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181135368-1587291421.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/031.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1033,7 +1033,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1045,7 +1045,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181135881-686789092.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/032.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1053,7 +1053,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1065,7 +1065,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181136370-1275582016.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/033.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1073,7 +1073,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1081,7 +1081,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**3.效果**
+### 3. 效果
 
 
 
@@ -1109,7 +1109,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181136765-1428000712.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/034.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1137,7 +1137,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**4.训练**
+### 4. 训练
 
 
 
@@ -1153,7 +1153,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**5.影响**
+### 5. 影响
 
 
 
@@ -1165,7 +1165,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181137242-118115980.png" alt="img" style="zoom: 23%;" /><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181137580-27969541.png" alt="img" style="zoom: 80%;" />
+<img src="images/035.png" alt="img" style="zoom: 23%;" /><img src="images/036.png" alt="img" style="zoom: 80%;" />
 
 
 
@@ -1173,7 +1173,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1181,15 +1181,15 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-# **六. 回顾**
+
+## 六. 回顾
 
 
 
-## 　　**1.影响**　　
+### 1. 影响
 
 
 
@@ -1201,7 +1201,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181138093-194632135.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/037.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1209,7 +1209,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1225,7 +1225,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**2.效果**　　
+### 2. 效果
 
 
 
@@ -1237,7 +1237,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181138618-210770272.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/038.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1245,7 +1245,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1257,7 +1257,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**3.外因**　　
+### 3. 外因
 
 
 
@@ -1265,7 +1265,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181139055-579720110.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/039.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1273,7 +1273,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1297,7 +1297,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1309,15 +1309,15 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-# **七. 展望**
+
+## 七. 展望
 
 
 
-## 　　**1.量子计算**
+### 1. 量子计算
 
 
 
@@ -1337,7 +1337,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181139433-1542110300.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/040.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1345,11 +1345,11 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-## 　　**2.人工智能**
+
+### 2. 人工智能
 
 
 
@@ -1365,7 +1365,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181140107-948066344.png" alt="img" style="zoom: 20%;" /></center>
+<center><img src="images/041.png" alt="img" style="zoom: 20%;" /></center>
 
 
 
@@ -1373,11 +1373,11 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-# **八. 总结**
+
+## 八. 总结
 
 
 
@@ -1385,11 +1385,11 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-# **九. 后记**
+
+## 九. 后记
 
 
 
@@ -1401,11 +1401,11 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
 
 
 
-# **十. 备注**
+
+## 十. 备注
 
 
 
@@ -1413,7 +1413,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**1.概念**
+### 1. 概念
 
 
 
@@ -1465,7 +1465,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**2.类别**
+### 2. 类别
 
 
 
@@ -1477,7 +1477,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181140806-1638222284.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/042.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1485,7 +1485,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1505,7 +1505,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-## 　　**3.教程**
+### 3. 教程
 
 
 
@@ -1521,7 +1521,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-<center><img src="https://img2023.cnblogs.com/blog/3338811/202407/3338811-20240710181141278-1592996238.png" alt="img" style="zoom:50%;" /></center>
+<center><img src="images/043.png" alt="img" style="zoom:50%;" /></center>
 
 
 
@@ -1529,7 +1529,7 @@ $$loss=(\\hat y-y)^2$$
 
 
 
-&#x20;
+
 
 
 
@@ -1542,6 +1542,3 @@ $$loss=(\\hat y-y)^2$$
 
 
 **版权说明：本文属于原作者和博客园共同所有。转载请注明[出处](https://www.cnblogs.com/subconscious/p/5058741.html)。本人在原文上做出些许修改与注解，仅为方便自己的阅读和理解，不影响版权归属，文中不再说明。**
-
-
-
