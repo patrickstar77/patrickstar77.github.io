@@ -1,4 +1,4 @@
-# Patrick Star 的技术博客
+# PatrickStar 的博客
 
 本仓库使用 Hugo 和 PaperMod 构建，并通过 GitHub Actions 发布到 GitHub Pages。
 

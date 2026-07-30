@@ -1,7 +1,7 @@
 baseURL: "https://patrickstar77.github.io/"
 locale: "zh-CN"
 defaultContentLanguage: "zh"
-title: "Patrick Star 的技术博客"
+title: "PatrickStar 的博客"
 theme: ["PaperMod"]
 
 pagination:
@@ -55,10 +55,10 @@ taxonomies:
 params:
   env: production
   math: true
-  title: "Patrick Star 的技术博客"
+  title: "PatrickStar 的博客"
   description: "记录 AI、强化学习、论文阅读与工程实践"
   keywords: ["AI", "强化学习", "深度学习", "技术博客"]
-  author: "Patrick Star"
+  author: "PatrickStar"
   DateFormat: "2006-01-02"
 
   defaultTheme: auto
