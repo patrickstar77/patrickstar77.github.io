@@ -172,24 +172,101 @@
       }
     }
 
-    const firstHit = hits[0];
-    if (!firstHit) {
+    if (!hits.length) {
       return;
     }
 
-    firstHit.classList.add('search-hit--current');
-    firstHit.tabIndex = -1;
-    window.requestAnimationFrame(() => {
-      window.setTimeout(() => {
-        firstHit.scrollIntoView({
-          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-            ? 'auto'
-            : 'smooth',
+    const navigator = document.createElement('aside');
+    navigator.className = 'search-hit-nav';
+    navigator.setAttribute('aria-label', '文章内搜索结果导航');
+    navigator.innerHTML = `
+      <span class="search-hit-nav__query"></span>
+      <button class="search-hit-nav__button search-hit-nav__previous" type="button" aria-label="上一个关键词" title="上一个关键词">↑</button>
+      <output class="search-hit-nav__counter" aria-live="polite"></output>
+      <button class="search-hit-nav__button search-hit-nav__next" type="button" aria-label="下一个关键词" title="下一个关键词">↓</button>
+      <button class="search-hit-nav__button search-hit-nav__close" type="button" aria-label="关闭搜索结果导航并清除高亮" title="关闭并清除高亮">&times;</button>
+    `;
+    document.body.appendChild(navigator);
+
+    const queryLabel = navigator.querySelector('.search-hit-nav__query');
+    const previousButton = navigator.querySelector('.search-hit-nav__previous');
+    const nextButton = navigator.querySelector('.search-hit-nav__next');
+    const closeButton = navigator.querySelector('.search-hit-nav__close');
+    const counter = navigator.querySelector('.search-hit-nav__counter');
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+    let currentIndex = -1;
+
+    queryLabel.textContent = query;
+    queryLabel.title = `当前关键词：${query}`;
+    previousButton.disabled = hits.length < 2;
+    nextButton.disabled = hits.length < 2;
+
+    const activateHit = (index, initial = false) => {
+      if (currentIndex >= 0) {
+        hits[currentIndex].classList.remove('search-hit--current');
+        hits[currentIndex].removeAttribute('tabindex');
+      }
+
+      currentIndex = (index + hits.length) % hits.length;
+      const currentHit = hits[currentIndex];
+      currentHit.classList.add('search-hit--current');
+      currentHit.tabIndex = -1;
+
+      counter.textContent = `${currentIndex + 1} / ${hits.length}`;
+      counter.setAttribute(
+        'aria-label',
+        `第 ${currentIndex + 1} 个，共 ${hits.length} 个匹配`
+      );
+
+      const scrollToHit = () => {
+        currentHit.scrollIntoView({
+          behavior: reducedMotion ? 'auto' : 'smooth',
           block: 'center'
         });
-        firstHit.focus({ preventScroll: true });
-      }, 120);
+        currentHit.focus({ preventScroll: true });
+      };
+
+      if (initial) {
+        window.requestAnimationFrame(() => {
+          window.setTimeout(scrollToHit, 120);
+        });
+      } else {
+        scrollToHit();
+      }
+    };
+
+    const closeNavigator = () => {
+      const parents = new Set();
+      hits.forEach((hit) => {
+        parents.add(hit.parentNode);
+        hit.replaceWith(document.createTextNode(hit.textContent));
+      });
+      parents.forEach((parent) => parent?.normalize());
+
+      const url = new URL(window.location.href);
+      url.searchParams.delete('q');
+      window.history.replaceState(
+        window.history.state,
+        '',
+        `${url.pathname}${url.search}${url.hash}`
+      );
+
+      navigator.remove();
+      contentRoot?.setAttribute('tabindex', '-1');
+      contentRoot?.focus({ preventScroll: true });
+    };
+
+    previousButton.addEventListener('click', () => {
+      activateHit(currentIndex - 1);
     });
+    nextButton.addEventListener('click', () => {
+      activateHit(currentIndex + 1);
+    });
+    closeButton.addEventListener('click', closeNavigator);
+
+    activateHit(0, true);
   })();
 </script>
 
