@@ -87,12 +87,15 @@ params:
 
   homeInfoParams:
     Title: "欢迎访问我的博客"
-    Content: "你好，我是 PatrickStar，目前专注于离线强化学习（Offline Reinforcement Learning）的学习与研究，关注如何从固定数据集中学习可靠、稳健且具有泛化能力的决策策略。这个博客用于系统记录我在 AI、强化学习、深度学习、论文阅读、实验复现与工程实践中的思考与积累，也会分享环境配置、问题排查和研究过程中总结的经验。希望这些内容既能沉淀自己的学习路径，也能为有相似兴趣的读者提供参考。欢迎交流与讨论！"
+    Content: "你好，我是 PatrickStar，目前专注于离线强化学习的学习与研究，关注如何从固定数据集中学习可靠、稳健且具有泛化能力的决策策略。这个博客用于系统记录我在 AI、强化学习、深度学习、论文阅读、实验复现与工程实践中的思考与积累，也会分享环境配置、问题排查和研究过程中总结的经验。希望这些内容既能沉淀自己的学习路径，也能为有相似兴趣的读者提供参考。欢迎交流与讨论！"
 
   socialIcons:
     - name: github
       title: "GitHub"
       url: "https://github.com/patrickstar77"
+    - name: email
+      title: "邮箱"
+      url: "mailto:yong170249@163.com"
     - name: rss
       title: "RSS"
       url: "index.xml"

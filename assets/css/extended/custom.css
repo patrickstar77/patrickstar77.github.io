@@ -103,8 +103,8 @@
   z-index: 0;
   top: 50%;
   right: 0;
-  width: 104px;
-  opacity: 0.3;
+  width: 196px;
+  opacity: 0.2;
   pointer-events: none;
   transform: translateY(-50%);
   user-select: none;
@@ -119,7 +119,7 @@
 }
 
 :root[data-theme="dark"] .home-info__brand {
-  opacity: 0.24;
+  opacity: 0.16;
   filter: invert(1);
 }
 
@@ -667,7 +667,7 @@ body.lightbox-open {
   .home-info__brand {
     top: 48%;
     right: 8px;
-    width: 104px;
+    width: 156px;
   }
 
   .post-title {
