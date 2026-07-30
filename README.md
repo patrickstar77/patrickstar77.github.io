@@ -21,3 +21,8 @@ hugo new content posts/my-new-post.md
 ## 发布
 
 将更改推送到 `main` 分支后，GitHub Actions 会自动构建并部署网站。
+
+## 评论系统
+
+文章评论使用 [Giscus](https://giscus.app/zh-CN)，数据保存在本仓库的
+GitHub Discussions 中。访客使用 GitHub 登录后，可以发表评论、表情反应和线程回复。

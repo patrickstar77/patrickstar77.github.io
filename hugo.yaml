@@ -55,6 +55,7 @@ taxonomies:
 params:
   env: production
   math: true
+  comments: true
   title: "PatrickStar 的博客"
   description: "记录 AI、强化学习、论文阅读与工程实践"
   keywords: ["AI", "强化学习", "深度学习", "技术博客"]

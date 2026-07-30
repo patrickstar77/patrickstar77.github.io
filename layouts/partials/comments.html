@@ -1,0 +1,66 @@
+{{- if eq .Section "posts" -}}
+<section class="comments-area" aria-labelledby="comments-title">
+  <header class="comments-header">
+    <h2 id="comments-title">评论</h2>
+    <p>使用 GitHub 登录后即可发表评论和线程回复。</p>
+  </header>
+
+  <script
+    src="https://giscus.app/client.js"
+    data-repo="patrickstar77/patrickstar77.github.io"
+    data-repo-id="R_kgDOTnw5OA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOTnw5OM4DCSBU"
+    data-mapping="pathname"
+    data-strict="1"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    data-loading="lazy"
+    crossorigin="anonymous"
+    async>
+  </script>
+
+  <noscript>
+    请启用 JavaScript 以查看评论，或前往
+    <a href="https://github.com/patrickstar77/patrickstar77.github.io/discussions">GitHub Discussions</a>
+    参与讨论。
+  </noscript>
+</section>
+
+<script>
+  (() => {
+    const root = document.documentElement;
+
+    const syncGiscusTheme = () => {
+      const frame = document.querySelector('iframe.giscus-frame');
+      if (!frame) {
+        return false;
+      }
+
+      const theme = root.dataset.theme === 'dark' ? 'dark' : 'light';
+      frame.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        'https://giscus.app'
+      );
+      return true;
+    };
+
+    const themeObserver = new MutationObserver(syncGiscusTheme);
+    themeObserver.observe(root, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+
+    let attempts = 0;
+    const frameTimer = window.setInterval(() => {
+      attempts += 1;
+      if (syncGiscusTheme() || attempts >= 40) {
+        window.clearInterval(frameTimer);
+      }
+    }, 250);
+  })();
+</script>
+{{- end -}}
