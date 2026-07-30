@@ -1,0 +1,16 @@
+:root {
+  --main-width: 760px;
+}
+
+.home-info .entry-content {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.post-content {
+  line-height: 1.85;
+}
+
+.post-content img {
+  border-radius: 8px;
+}
