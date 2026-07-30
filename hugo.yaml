@@ -33,6 +33,9 @@ markup:
     lineNos: false
   goldmark:
     extensions:
+      extras:
+        mark:
+          enable: true
       passthrough:
         delimiters:
           block:
@@ -40,9 +43,10 @@ markup:
             - ["$$", "$$"]
           inline:
             - ["\\(", "\\)"]
+            - ["$", "$"]
         enable: true
     renderer:
-      unsafe: false
+      unsafe: true
   tableOfContents:
     startLevel: 2
     endLevel: 4
