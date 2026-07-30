@@ -122,6 +122,222 @@ body.lightbox-open {
   }
 }
 
+.post-content :is(h2, h3, h4, h5, h6) {
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
+.floating-toc {
+  position: fixed;
+  z-index: 90;
+  top: calc(var(--header-height) + 16px);
+  left: calc(50% + var(--main-width) / 2 + var(--gap) + 16px);
+  display: none;
+  width: min(
+    280px,
+    calc(50vw - var(--main-width) / 2 - var(--gap) - 32px)
+  );
+  max-height: calc(100vh - var(--header-height) - 40px);
+  padding: 14px 14px 16px;
+  overflow-y: auto;
+  color: var(--secondary);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  background: var(--theme);
+  background: color-mix(in srgb, var(--theme) 94%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 7%);
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+.floating-toc__title {
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.floating-toc nav ul,
+.toc-drawer nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.floating-toc nav ul ul,
+.toc-drawer nav ul ul {
+  margin-inline-start: 10px;
+  padding-inline-start: 10px;
+  border-inline-start: 1px solid var(--border);
+}
+
+.floating-toc nav li,
+.toc-drawer nav li {
+  margin: 2px 0;
+}
+
+.floating-toc nav a,
+.toc-drawer nav a {
+  display: block;
+  padding: 5px 8px;
+  color: var(--secondary);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.floating-toc nav a:hover,
+.toc-drawer nav a:hover {
+  color: var(--primary);
+  background: var(--tertiary);
+}
+
+.floating-toc nav a.is-active,
+.toc-drawer nav a.is-active {
+  color: var(--primary);
+  font-weight: 600;
+  background: var(--tertiary);
+}
+
+.floating-toc nav li > ul {
+  display: none;
+}
+
+.floating-toc nav li.is-current-path > ul {
+  display: block;
+}
+
+.toc-fab {
+  position: fixed;
+  z-index: 100;
+  right: 2rem;
+  bottom: 7.25rem;
+  display: inline-flex;
+  min-width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 12px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: var(--tertiary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 12%);
+  cursor: pointer;
+}
+
+.toc-fab:hover,
+.toc-fab:focus-visible {
+  background: var(--code-bg);
+}
+
+.toc-fab svg {
+  width: 18px;
+  height: 18px;
+}
+
+body.toc-drawer-open {
+  overflow: hidden;
+}
+
+.toc-drawer {
+  position: fixed;
+  z-index: 9997;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  background: rgb(0 0 0 / 45%);
+}
+
+.toc-drawer[hidden] {
+  display: none;
+}
+
+.toc-drawer__panel {
+  display: flex;
+  width: min(88vw, 380px);
+  height: 100%;
+  color: var(--content);
+  background: var(--theme);
+  box-shadow: -12px 0 36px rgb(0 0 0 / 20%);
+  flex-direction: column;
+}
+
+.toc-drawer__header {
+  display: flex;
+  min-height: 60px;
+  padding: 12px 14px 12px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.toc-drawer__title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.toc-drawer__close {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: var(--primary);
+  font-size: 28px;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  place-items: center;
+}
+
+.toc-drawer__close:hover,
+.toc-drawer__close:focus-visible {
+  background: var(--tertiary);
+}
+
+.toc-drawer__body {
+  padding: 14px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (min-width: 1280px) {
+  .floating-toc {
+    display: block;
+  }
+
+  .toc-fab,
+  .toc-drawer {
+    display: none;
+  }
+}
+
+@media (max-width: 1279px) {
+  .toc-fab {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 600px) {
+  .toc-fab {
+    right: 1rem;
+    bottom: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-toc nav a,
+  .toc-drawer nav a {
+    transition: none;
+  }
+}
+
 .comments-area {
   margin-top: 32px;
   padding-top: 24px;

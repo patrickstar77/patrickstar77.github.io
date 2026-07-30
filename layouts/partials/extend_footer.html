@@ -79,3 +79,205 @@
     });
   })();
 </script>
+
+<script>
+  (() => {
+    const sourceToc = document.querySelector('#TableOfContents');
+    const article = document.querySelector('.post-content');
+    if (!sourceToc || !article) {
+      return;
+    }
+
+    const sourceLinks = [...sourceToc.querySelectorAll('a[href^="#"]')];
+    if (!sourceLinks.length) {
+      return;
+    }
+
+    const cloneToc = (id) => {
+      const nav = sourceToc.cloneNode(true);
+      nav.id = id;
+      return nav;
+    };
+
+    const desktopToc = document.createElement('aside');
+    desktopToc.className = 'floating-toc';
+    desktopToc.setAttribute('aria-label', '文章目录');
+    desktopToc.innerHTML = '<div class="floating-toc__title">本页目录</div>';
+    desktopToc.appendChild(cloneToc('FloatingTableOfContents'));
+    document.body.appendChild(desktopToc);
+
+    const toggleButton = document.createElement('button');
+    toggleButton.className = 'toc-fab';
+    toggleButton.type = 'button';
+    toggleButton.setAttribute('aria-label', '打开文章目录');
+    toggleButton.setAttribute('aria-expanded', 'false');
+    toggleButton.setAttribute('aria-controls', 'TocDrawer');
+    toggleButton.innerHTML = `
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M8 6h13M8 12h13M8 18h13"></path>
+        <path d="M3 6h.01M3 12h.01M3 18h.01"></path>
+      </svg>
+      <span>目录</span>
+    `;
+    document.body.appendChild(toggleButton);
+
+    const drawer = document.createElement('div');
+    drawer.id = 'TocDrawer';
+    drawer.className = 'toc-drawer';
+    drawer.hidden = true;
+    drawer.setAttribute('role', 'dialog');
+    drawer.setAttribute('aria-modal', 'true');
+    drawer.setAttribute('aria-labelledby', 'TocDrawerTitle');
+    drawer.innerHTML = `
+      <section class="toc-drawer__panel">
+        <header class="toc-drawer__header">
+          <h2 id="TocDrawerTitle" class="toc-drawer__title">本页目录</h2>
+          <button class="toc-drawer__close" type="button" aria-label="关闭文章目录">&times;</button>
+        </header>
+        <div class="toc-drawer__body"></div>
+      </section>
+    `;
+    drawer.querySelector('.toc-drawer__body')
+      .appendChild(cloneToc('DrawerTableOfContents'));
+    document.body.appendChild(drawer);
+
+    const closeButton = drawer.querySelector('.toc-drawer__close');
+    const drawerPanel = drawer.querySelector('.toc-drawer__panel');
+    const allTocLinks = [
+      ...desktopToc.querySelectorAll('a[href^="#"]'),
+      ...drawer.querySelectorAll('a[href^="#"]')
+    ];
+
+    const closeDrawer = () => {
+      drawer.hidden = true;
+      toggleButton.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('toc-drawer-open');
+      toggleButton.focus();
+    };
+
+    const openDrawer = () => {
+      drawer.hidden = false;
+      toggleButton.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('toc-drawer-open');
+      closeButton.focus();
+    };
+
+    toggleButton.addEventListener('click', openDrawer);
+    closeButton.addEventListener('click', closeDrawer);
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1280 && !drawer.hidden) {
+        drawer.hidden = true;
+        toggleButton.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('toc-drawer-open');
+      }
+    });
+    drawer.addEventListener('click', (event) => {
+      if (event.target === drawer) {
+        closeDrawer();
+      }
+    });
+
+    drawer.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    drawer.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeDrawer();
+        return;
+      }
+
+      if (event.key !== 'Tab') {
+        return;
+      }
+
+      const focusable = [
+        ...drawerPanel.querySelectorAll('button, a[href]')
+      ].filter((element) => !element.hasAttribute('disabled'));
+      if (!focusable.length) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    const headings = sourceLinks
+      .map((link) => {
+        const id = decodeURIComponent(link.getAttribute('href').slice(1));
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+
+    const setActiveHeading = (heading) => {
+      if (!heading) {
+        return;
+      }
+
+      const target = `#${heading.id}`;
+      allTocLinks.forEach((link) => {
+        const active = decodeURIComponent(link.getAttribute('href')) === target;
+        link.classList.toggle('is-active', active);
+        if (active) {
+          link.setAttribute('aria-current', 'location');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+
+      desktopToc.querySelectorAll('li.is-current-path').forEach((item) => {
+        item.classList.remove('is-current-path');
+      });
+
+      const activeDesktopLink = [...desktopToc.querySelectorAll('a[href^="#"]')]
+        .find((link) => decodeURIComponent(link.getAttribute('href')) === target);
+      let listItem = activeDesktopLink?.closest('li');
+      while (listItem && desktopToc.contains(listItem)) {
+        listItem.classList.add('is-current-path');
+        listItem = listItem.parentElement?.closest('li');
+      }
+
+      if (window.matchMedia('(min-width: 1280px)').matches) {
+        activeDesktopLink?.scrollIntoView({ block: 'nearest' });
+      } else if (!drawer.hidden) {
+        const activeDrawerLink = [...drawer.querySelectorAll('a[href^="#"]')]
+          .find((link) => decodeURIComponent(link.getAttribute('href')) === target);
+        activeDrawerLink?.scrollIntoView({ block: 'nearest' });
+      }
+    };
+
+    const initialHeading = [...headings]
+      .reverse()
+      .find((heading) => heading.getBoundingClientRect().top <= 120) || headings[0];
+    setActiveHeading(initialHeading);
+
+    const visibleHeadings = new Map();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          visibleHeadings.set(entry.target, entry.boundingClientRect.top);
+        } else {
+          visibleHeadings.delete(entry.target);
+        }
+      });
+
+      const current = [...visibleHeadings.entries()]
+        .sort((left, right) => left[1] - right[1])[0]?.[0];
+      if (current) {
+        setActiveHeading(current);
+      }
+    }, {
+      rootMargin: '-80px 0px -70% 0px',
+      threshold: [0, 1]
+    });
+
+    headings.forEach((heading) => observer.observe(heading));
+  })();
+</script>
