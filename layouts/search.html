@@ -1,0 +1,66 @@
+{{- define "main" }}
+
+<header class="page-header">
+    <h1>{{- (printf "%s&nbsp;" .Title ) | htmlUnescape -}}
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+
+<div id="searchbox" class="searchbox">
+    <input id="searchInput" disabled placeholder="{{ .Params.placeholder | default (printf "%s ↵" .Title) }}"
+        aria-label="全文搜索" aria-describedby="searchHelp" type="search" autocomplete="off" maxlength="64">
+    <p id="searchHelp" class="search-help">
+        搜索范围包括文章标题、摘要与正文，打开结果后会直接定位到关键词。
+    </p>
+    <p id="searchStatus" class="search-status" aria-live="polite" hidden></p>
+    <ul id="searchResults" class="searchResults" aria-label="搜索结果"></ul>
+</div>
+
+<section id="searchGuide" class="search-guide" aria-labelledby="searchGuideTitle">
+    <div class="search-guide__intro">
+        <h2 id="searchGuideTitle">开始搜索</h2>
+        <p>输入技术名词、环境名称或文章中的句子，即可进行站内全文检索。</p>
+        <div class="search-shortcuts" aria-label="键盘操作说明">
+            <span><kbd>↑</kbd><kbd>↓</kbd> 选择结果</span>
+            <span><kbd>→</kbd> 打开结果</span>
+            <span><kbd>Esc</kbd> 清空搜索</span>
+        </div>
+    </div>
+
+    <div class="search-guide__section">
+        <h2>热门标签</h2>
+        <ul class="search-guide__tags">
+            {{- range first 8 site.Taxonomies.tags.ByCount }}
+            <li>
+                <a href="{{ .Page.RelPermalink }}">
+                    {{ .Page.LinkTitle }} <span>{{ .Count }}</span>
+                </a>
+            </li>
+            {{- end }}
+        </ul>
+    </div>
+
+    <div class="search-guide__section">
+        <h2>最近文章</h2>
+        <ul class="search-guide__recent">
+            {{- $posts := where site.RegularPages "Section" "posts" }}
+            {{- range first 3 $posts.ByDate.Reverse }}
+            <li>
+                <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            </li>
+            {{- end }}
+        </ul>
+    </div>
+</section>
+
+{{- end }}

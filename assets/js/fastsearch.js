@@ -3,6 +3,8 @@ import * as params from '@params';
 const resList = document.getElementById('searchResults');
 const sInput = document.getElementById('searchInput');
 const searchBox = document.getElementById('searchbox');
+const searchGuide = document.getElementById('searchGuide');
+const searchStatus = document.getElementById('searchStatus');
 
 let fuse;
 let currentElement = null;
@@ -50,6 +52,11 @@ const reset = () => {
     lastResult = null;
     resList.innerHTML = '';
     sInput.value = '';
+    searchGuide?.removeAttribute('hidden');
+    if (searchStatus) {
+        searchStatus.hidden = true;
+        searchStatus.textContent = '';
+    }
     sInput.focus();
 };
 
@@ -109,10 +116,23 @@ const getResultContext = (result, query) => {
 };
 
 const renderResults = (results, query) => {
+    searchGuide?.toggleAttribute('hidden', Boolean(query));
+
     if (!Array.isArray(results) || results.length === 0) {
         resList.innerHTML = '';
         firstResult = lastResult = currentElement = null;
+        if (searchStatus) {
+            searchStatus.hidden = !query;
+            searchStatus.textContent = query
+                ? `没有找到与“${query}”相关的内容，请尝试更短或更通用的关键词。`
+                : '';
+        }
         return;
+    }
+
+    if (searchStatus) {
+        searchStatus.hidden = false;
+        searchStatus.textContent = `找到 ${results.length} 篇相关内容。`;
     }
 
     const fragment = document.createDocumentFragment();

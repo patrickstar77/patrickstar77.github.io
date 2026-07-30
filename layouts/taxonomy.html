@@ -1,0 +1,57 @@
+{{- define "main" }}
+
+{{- if .Title }}
+<header class="page-header">
+    <h1>{{ .Title }}</h1>
+    {{- if .Description }}
+    <div class="post-description">
+        {{ .Description }}
+    </div>
+    {{- end }}
+</header>
+{{- end }}
+
+{{- if eq .Type "categories" }}
+{{- $descriptions := dict
+    "学习笔记" "课程笔记、基础知识与深度学习主题的系统整理。"
+    "环境配置" "Windows、Linux、WSL2、PyTorch 与科研工具链配置记录。"
+    "博客" "关于本站建设、发布流程与个人记录的文章。"
+}}
+<ul class="category-grid">
+    {{- range .Data.Terms.ByCount }}
+    {{- $description := index $descriptions .Page.LinkTitle | default "浏览该分类下的全部文章。" }}
+    <li class="category-card">
+        <a class="category-card__link" href="{{ .Page.RelPermalink }}" aria-label="查看分类：{{ .Page.LinkTitle }}"></a>
+        <div class="category-card__header">
+            <h2>{{ .Page.LinkTitle }}</h2>
+            <span>{{ .Count }} 篇</span>
+        </div>
+        <p>{{ $description }}</p>
+        <div class="category-card__recent">
+            <span>近期文章</span>
+            <ul>
+                {{- range first 2 .Pages.ByDate.Reverse }}
+                <li>{{ .Title | markdownify }}</li>
+                {{- end }}
+            </ul>
+        </div>
+        <span class="category-card__action" aria-hidden="true">浏览分类 →</span>
+    </li>
+    {{- end }}
+</ul>
+{{- else }}
+<ul class="terms-tags">
+    {{- $type := .Type }}
+    {{- range $key, $value := .Data.Terms.Alphabetical }}
+        {{- $name := .Name }}
+        {{- $count := .Count }}
+        {{- with site.GetPage (printf "/%s/%s" $type $name) }}
+        <li>
+            <a href="{{ .Permalink }}">{{ .LinkTitle }} <sup><strong><sup>{{ $count }}</sup></strong></sup></a>
+        </li>
+        {{- end }}
+    {{- end }}
+</ul>
+{{- end }}
+
+{{- end }}
