@@ -82,6 +82,119 @@
 
 <script>
   (() => {
+    const query = new URLSearchParams(window.location.search).get('q')?.trim();
+    if (!query) {
+      return;
+    }
+
+    const contentRoot = document.querySelector('.post-content');
+    const titleRoot = document.querySelector('.post-title');
+    if (!contentRoot && !titleRoot) {
+      return;
+    }
+
+    const terms = [
+      query,
+      ...query.split(/\s+/).filter((term) => term.length >= 2)
+    ];
+    const excludedSelector = [
+      'script',
+      'style',
+      'textarea',
+      '.MathJax',
+      '.katex',
+      '.image-lightbox',
+      '.comments-area'
+    ].join(',');
+
+    const highlightTerm = (root, term) => {
+      if (!root || !term) {
+        return [];
+      }
+
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      let node;
+      while ((node = walker.nextNode())) {
+        if (
+          node.nodeValue.trim() &&
+          !node.parentElement.closest(excludedSelector)
+        ) {
+          nodes.push(node);
+        }
+      }
+
+      const hits = [];
+      const lowerTerm = term.toLocaleLowerCase();
+      for (const textNode of nodes) {
+        if (hits.length >= 100) {
+          break;
+        }
+
+        const text = textNode.nodeValue;
+        const lowerText = text.toLocaleLowerCase();
+        let index = lowerText.indexOf(lowerTerm);
+        if (index < 0) {
+          continue;
+        }
+
+        const fragment = document.createDocumentFragment();
+        let cursor = 0;
+        while (index >= 0 && hits.length < 100) {
+          fragment.append(text.slice(cursor, index));
+
+          const mark = document.createElement('mark');
+          mark.className = 'search-hit';
+          mark.textContent = text.slice(index, index + term.length);
+          fragment.appendChild(mark);
+          hits.push(mark);
+
+          cursor = index + term.length;
+          index = lowerText.indexOf(lowerTerm, cursor);
+        }
+        fragment.append(text.slice(cursor));
+        textNode.replaceWith(fragment);
+      }
+
+      return hits;
+    };
+
+    let hits = [];
+    for (const term of terms) {
+      hits = highlightTerm(contentRoot, term);
+      if (hits.length) {
+        break;
+      }
+
+      hits = highlightTerm(titleRoot, term);
+      if (hits.length) {
+        break;
+      }
+    }
+
+    const firstHit = hits[0];
+    if (!firstHit) {
+      return;
+    }
+
+    firstHit.classList.add('search-hit--current');
+    firstHit.tabIndex = -1;
+    window.requestAnimationFrame(() => {
+      window.setTimeout(() => {
+        firstHit.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'auto'
+            : 'smooth',
+          block: 'center'
+        });
+        firstHit.focus({ preventScroll: true });
+      }, 120);
+    });
+  })();
+</script>
+
+<script>
+  (() => {
     const sourceToc = document.querySelector('#TableOfContents');
     const article = document.querySelector('.post-content');
     if (!sourceToc || !article) {
