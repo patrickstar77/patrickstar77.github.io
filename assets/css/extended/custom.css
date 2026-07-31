@@ -8,6 +8,11 @@
   --surface-radius: 10px;
   --motion-fast: 160ms ease;
   --motion-soft: 220ms ease;
+  --glass-surface: rgb(255 255 255 / 72%);
+  --glass-highlight: rgb(255 255 255 / 82%);
+  --glass-tint: rgb(125 211 252 / 12%);
+  --glass-border: rgb(255 255 255 / 78%);
+  --glass-shadow: rgb(15 23 42 / 12%);
 }
 
 :root[data-theme="dark"] {
@@ -16,6 +21,11 @@
   --accent-soft: rgb(56 189 248 / 14%);
   --accent-ring: rgb(56 189 248 / 46%);
   --content-link: var(--accent);
+  --glass-surface: rgb(46 46 51 / 72%);
+  --glass-highlight: rgb(255 255 255 / 16%);
+  --glass-tint: rgb(56 189 248 / 9%);
+  --glass-border: rgb(255 255 255 / 20%);
+  --glass-shadow: rgb(0 0 0 / 34%);
 }
 
 ::selection {
@@ -270,14 +280,28 @@ body.lightbox-open {
 .post-entry {
   transition:
     transform var(--motion-soft),
+    background-color var(--motion-soft),
     border-color var(--motion-fast),
-    box-shadow var(--motion-soft);
+    box-shadow var(--motion-soft),
+    backdrop-filter var(--motion-soft);
 }
 
 .post-entry:hover,
 .post-entry:focus-within {
-  border-color: var(--accent-ring);
-  box-shadow: 0 10px 28px rgb(2 132 199 / 9%);
+  background:
+    linear-gradient(
+      135deg,
+      var(--glass-highlight),
+      transparent 42%,
+      var(--glass-tint)
+    ),
+    var(--glass-surface);
+  border-color: var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 14px 32px var(--glass-shadow);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
 }
 
 .terms-tags a,
@@ -504,14 +528,28 @@ body.lightbox-open {
   flex-direction: column;
   transition:
     transform var(--motion-soft),
+    background-color var(--motion-soft),
     border-color var(--motion-fast),
-    box-shadow var(--motion-soft);
+    box-shadow var(--motion-soft),
+    backdrop-filter var(--motion-soft);
 }
 
 .category-card:hover,
 .category-card:focus-within {
-  border-color: var(--accent-ring);
-  box-shadow: 0 12px 30px rgb(2 132 199 / 9%);
+  background:
+    linear-gradient(
+      135deg,
+      var(--glass-highlight),
+      transparent 42%,
+      var(--glass-tint)
+    ),
+    var(--glass-surface);
+  border-color: var(--glass-border);
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight),
+    0 14px 32px var(--glass-shadow);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
   transform: translateY(-2px);
 }
 
