@@ -13,3 +13,7 @@
 </script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 {{- end -}}
+
+{{- if or .IsHome (and .IsPage (eq .Section "posts")) -}}
+<script defer src="https://cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js"></script>
+{{- end -}}

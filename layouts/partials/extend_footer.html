@@ -471,3 +471,87 @@
     headings.forEach((heading) => observer.observe(heading));
   })();
 </script>
+
+{{- if and .IsPage (eq .Section "posts") -}}
+<script>
+  (() => {
+    const meta = document.querySelector('.post-single .post-meta');
+    if (!meta || meta.querySelector('.post-views')) {
+      return;
+    }
+
+    const views = document.createElement('span');
+    views.className = 'post-views';
+    views.title = '本页阅读量由不蒜子统计';
+    views.innerHTML = '&nbsp;·&nbsp;<span id="busuanzi_page_pv" aria-live="polite">加载中…</span> 次阅读';
+    meta.appendChild(views);
+
+    const value = views.querySelector('#busuanzi_page_pv');
+    const markUnavailable = () => {
+      views.innerHTML = '&nbsp;·&nbsp;阅读量暂不可用';
+      views.classList.add('post-views--unavailable');
+    };
+    const observer = new MutationObserver(() => {
+      const content = value.textContent.trim();
+      if (content !== '加载中…' && !/^\d[\d,]*$/.test(content)) {
+        observer.disconnect();
+        markUnavailable();
+      }
+    });
+    observer.observe(value, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+
+    window.setTimeout(() => {
+      if (value.isConnected && value.textContent.trim() === '加载中…') {
+        observer.disconnect();
+        markUnavailable();
+      }
+    }, 10000);
+  })();
+</script>
+{{- end -}}
+
+{{- if .IsHome -}}
+<script>
+  (() => {
+    const footer = document.querySelector('.footer');
+    if (!footer || footer.querySelector('.site-visitor-count')) {
+      return;
+    }
+
+    const visitors = document.createElement('span');
+    visitors.className = 'site-visitor-count';
+    visitors.title = '全站独立访客数由不蒜子统计';
+    visitors.innerHTML = '本站访客数（UV）：<span id="busuanzi_site_uv" aria-live="polite">加载中…</span>';
+    footer.appendChild(visitors);
+
+    const value = visitors.querySelector('#busuanzi_site_uv');
+    const markUnavailable = () => {
+      visitors.textContent = '本站访客数（UV）：暂不可用';
+      visitors.classList.add('site-visitor-count--unavailable');
+    };
+    const observer = new MutationObserver(() => {
+      const content = value.textContent.trim();
+      if (content !== '加载中…' && !/^\d[\d,]*$/.test(content)) {
+        observer.disconnect();
+        markUnavailable();
+      }
+    });
+    observer.observe(value, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+
+    window.setTimeout(() => {
+      if (value.isConnected && value.textContent.trim() === '加载中…') {
+        observer.disconnect();
+        markUnavailable();
+      }
+    }, 10000);
+  })();
+</script>
+{{- end -}}

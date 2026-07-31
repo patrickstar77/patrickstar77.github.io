@@ -137,6 +137,23 @@
   line-height: 1.74;
 }
 
+.post-views {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-views--unavailable,
+.site-visitor-count--unavailable {
+  color: var(--tertiary);
+}
+
+.footer .site-visitor-count {
+  display: block;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
 .post-content p {
   text-indent: 0;
 }
