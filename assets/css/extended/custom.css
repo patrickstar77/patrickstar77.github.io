@@ -941,6 +941,26 @@ body.lightbox-open {
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
+.floating-toc nav a.toc-branch-link,
+.toc-drawer nav a.toc-branch-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toc-branch-indicator {
+  margin-inline-start: auto;
+  font-size: 0.9em;
+  line-height: 1;
+  transform: rotate(0deg);
+  transition: transform 0.15s ease;
+  flex: 0 0 auto;
+}
+
+.toc-branch-link[aria-expanded="true"] .toc-branch-indicator {
+  transform: rotate(90deg);
+}
+
 .floating-toc nav a:hover,
 .toc-drawer nav a:hover {
   color: var(--primary);
@@ -1112,7 +1132,8 @@ body.toc-drawer-open {
 
   .floating-toc nav a,
   .toc-drawer nav a,
-  .toc-depth-control {
+  .toc-depth-control,
+  .toc-branch-indicator {
     transition: none;
   }
 }

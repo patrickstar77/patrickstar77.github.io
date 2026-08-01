@@ -363,11 +363,49 @@
     let currentDepth = 1;
     let currentHeading = null;
 
+    const getDirectChild = (item, selector) => [...item.children]
+      .find((child) => child.matches(selector));
+    const syncBranchIndicators = (root) => {
+      root.querySelectorAll('a.toc-branch-link').forEach((link) => {
+        const childList = getDirectChild(link.parentElement, 'ul, ol');
+        link.setAttribute('aria-expanded', String(!childList.hidden));
+      });
+    };
+    const setupBranchToggles = (root) => {
+      root.querySelectorAll('li').forEach((item) => {
+        const link = getDirectChild(item, 'a[href^="#"]');
+        const childList = getDirectChild(item, 'ul, ol');
+        if (!link || !childList) {
+          return;
+        }
+
+        link.classList.add('toc-branch-link');
+        const indicator = document.createElement('span');
+        indicator.className = 'toc-branch-indicator';
+        indicator.setAttribute('aria-hidden', 'true');
+        indicator.textContent = '›';
+        link.appendChild(indicator);
+
+        link.addEventListener('click', () => {
+          const expanding = childList.hidden;
+          childList.hidden = !expanding;
+          childList.querySelectorAll('ul, ol').forEach((list) => {
+            list.hidden = true;
+          });
+          syncBranchIndicators(root);
+          setActiveHeading(currentHeading);
+        });
+      });
+    };
+
+    tocRoots.forEach(setupBranchToggles);
+
     const applyTocDepth = () => {
       tocRoots.forEach((root) => {
         root.querySelectorAll('ul, ol').forEach((list) => {
           list.hidden = getListDepth(list, root) > currentDepth;
         });
+        syncBranchIndicators(root);
       });
 
       const nextDepth = currentDepth >= maxDepth ? 1 : currentDepth + 1;
@@ -442,7 +480,11 @@
     });
 
     drawer.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener('click', closeDrawer);
+      link.addEventListener('click', () => {
+        if (!link.classList.contains('toc-branch-link')) {
+          closeDrawer();
+        }
+      });
     });
 
     drawer.addEventListener('keydown', (event) => {
@@ -485,7 +527,18 @@
         .find((item) => decodeURIComponent(item.getAttribute('href')) === target);
       let list = link?.parentElement?.closest('ul, ol');
 
-      while (list && getListDepth(list, root) > currentDepth) {
+      const isListPathVisible = (candidate) => {
+        let currentList = candidate;
+        while (currentList && root.contains(currentList)) {
+          if (currentList.hidden) {
+            return false;
+          }
+          currentList = currentList.parentElement?.closest('ul, ol');
+        }
+        return true;
+      };
+
+      while (list && !isListPathVisible(list)) {
         link = list.parentElement?.querySelector(':scope > a[href^="#"]');
         list = link?.parentElement?.closest('ul, ol');
       }
