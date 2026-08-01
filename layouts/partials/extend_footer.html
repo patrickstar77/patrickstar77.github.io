@@ -360,7 +360,7 @@
         .map((list) => getListDepth(list, sourceToc))
     );
     const depthControls = [];
-    let currentDepth = maxDepth;
+    let currentDepth = 1;
 
     const applyTocDepth = () => {
       tocRoots.forEach((root) => {
