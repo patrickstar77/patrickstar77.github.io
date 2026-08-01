@@ -361,6 +361,7 @@
     );
     const depthControls = [];
     let currentDepth = 1;
+    let currentHeading = null;
 
     const applyTocDepth = () => {
       tocRoots.forEach((root) => {
@@ -396,6 +397,7 @@
       button.addEventListener('click', () => {
         currentDepth = currentDepth >= maxDepth ? 1 : currentDepth + 1;
         applyTocDepth();
+        setActiveHeading(currentHeading);
       });
       depthControls.push(button);
       return button;
@@ -409,10 +411,6 @@
 
     const closeButton = drawer.querySelector('.toc-drawer__close');
     const drawerPanel = drawer.querySelector('.toc-drawer__panel');
-    const allTocLinks = [
-      ...desktopToc.querySelectorAll('a[href^="#"]'),
-      ...drawer.querySelectorAll('a[href^="#"]')
-    ];
 
     const closeDrawer = () => {
       drawer.hidden = true;
@@ -482,40 +480,43 @@
       })
       .filter(Boolean);
 
+    const getVisibleActiveLink = (root, target) => {
+      let link = [...root.querySelectorAll('a[href^="#"]')]
+        .find((item) => decodeURIComponent(item.getAttribute('href')) === target);
+      let list = link?.parentElement?.closest('ul, ol');
+
+      while (list && getListDepth(list, root) > currentDepth) {
+        link = list.parentElement?.querySelector(':scope > a[href^="#"]');
+        list = link?.parentElement?.closest('ul, ol');
+      }
+
+      return link;
+    };
+
     const setActiveHeading = (heading) => {
       if (!heading) {
         return;
       }
 
+      currentHeading = heading;
       const target = `#${heading.id}`;
-      allTocLinks.forEach((link) => {
-        const active = decodeURIComponent(link.getAttribute('href')) === target;
-        link.classList.toggle('is-active', active);
-        if (active) {
-          link.setAttribute('aria-current', 'location');
-        } else {
+      tocRoots.forEach((root) => {
+        root.querySelectorAll('a[href^="#"]').forEach((link) => {
+          link.classList.remove('is-active');
           link.removeAttribute('aria-current');
-        }
+        });
       });
 
-      desktopToc.querySelectorAll('li.is-current-path').forEach((item) => {
-        item.classList.remove('is-current-path');
+      const activeLinks = tocRoots.map((root) => getVisibleActiveLink(root, target));
+      activeLinks.forEach((link) => {
+        link?.classList.add('is-active');
+        link?.setAttribute('aria-current', 'location');
       });
-
-      const activeDesktopLink = [...desktopToc.querySelectorAll('a[href^="#"]')]
-        .find((link) => decodeURIComponent(link.getAttribute('href')) === target);
-      let listItem = activeDesktopLink?.closest('li');
-      while (listItem && desktopToc.contains(listItem)) {
-        listItem.classList.add('is-current-path');
-        listItem = listItem.parentElement?.closest('li');
-      }
 
       if (window.matchMedia('(min-width: 1280px)').matches) {
-        activeDesktopLink?.scrollIntoView({ block: 'nearest' });
+        activeLinks[0]?.scrollIntoView({ block: 'nearest' });
       } else if (!drawer.hidden) {
-        const activeDrawerLink = [...drawer.querySelectorAll('a[href^="#"]')]
-          .find((link) => decodeURIComponent(link.getAttribute('href')) === target);
-        activeDrawerLink?.scrollIntoView({ block: 'nearest' });
+        activeLinks[1]?.scrollIntoView({ block: 'nearest' });
       }
     };
 
