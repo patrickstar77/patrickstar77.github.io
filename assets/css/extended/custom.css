@@ -845,11 +845,71 @@ body.lightbox-open {
   scrollbar-width: thin;
 }
 
-.floating-toc__title {
+.floating-toc__header {
+  display: flex;
   margin-bottom: 10px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.floating-toc__title {
   color: var(--primary);
   font-size: 0.95rem;
   font-weight: 600;
+}
+
+.toc-depth-control-slot {
+  display: flex;
+}
+
+.toc-depth-control {
+  display: inline-flex;
+  min-height: 28px;
+  padding: 3px 5px 3px 8px;
+  align-items: center;
+  gap: 5px;
+  color: var(--secondary);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.toc-depth-control:hover,
+.toc-depth-control:focus-visible {
+  color: var(--primary);
+  background: var(--tertiary);
+  border-color: var(--accent);
+}
+
+.toc-depth-control:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.toc-depth-control:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.toc-depth-control__badge {
+  display: grid;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  color: var(--theme);
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  background: var(--accent);
+  border-radius: 999px;
+  place-items: center;
 }
 
 .floating-toc nav ul,
@@ -894,12 +954,9 @@ body.lightbox-open {
   background: var(--tertiary);
 }
 
-.floating-toc nav li > ul {
+.floating-toc nav :is(ul, ol)[hidden],
+.toc-drawer nav :is(ul, ol)[hidden] {
   display: none;
-}
-
-.floating-toc nav li.is-current-path > ul {
-  display: block;
 }
 
 .toc-fab {
@@ -975,6 +1032,12 @@ body.toc-drawer-open {
   font-size: 1.05rem;
 }
 
+.toc-drawer__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .toc-drawer__close {
   display: grid;
   width: 40px;
@@ -1048,7 +1111,8 @@ body.toc-drawer-open {
   }
 
   .floating-toc nav a,
-  .toc-drawer nav a {
+  .toc-drawer nav a,
+  .toc-depth-control {
     transition: none;
   }
 }

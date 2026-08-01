@@ -292,7 +292,12 @@
     const desktopToc = document.createElement('aside');
     desktopToc.className = 'floating-toc';
     desktopToc.setAttribute('aria-label', '文章目录');
-    desktopToc.innerHTML = '<div class="floating-toc__title">本页目录</div>';
+    desktopToc.innerHTML = `
+      <div class="floating-toc__header">
+        <div class="floating-toc__title">本页目录</div>
+        <div class="toc-depth-control-slot"></div>
+      </div>
+    `;
     desktopToc.appendChild(cloneToc('FloatingTableOfContents'));
     document.body.appendChild(desktopToc);
 
@@ -322,7 +327,10 @@
       <section class="toc-drawer__panel">
         <header class="toc-drawer__header">
           <h2 id="TocDrawerTitle" class="toc-drawer__title">本页目录</h2>
-          <button class="toc-drawer__close" type="button" aria-label="关闭文章目录">&times;</button>
+          <div class="toc-drawer__actions">
+            <div class="toc-depth-control-slot"></div>
+            <button class="toc-drawer__close" type="button" aria-label="关闭文章目录">&times;</button>
+          </div>
         </header>
         <div class="toc-drawer__body"></div>
       </section>
@@ -330,6 +338,74 @@
     drawer.querySelector('.toc-drawer__body')
       .appendChild(cloneToc('DrawerTableOfContents'));
     document.body.appendChild(drawer);
+
+    const tocRoots = [
+      desktopToc.querySelector('#FloatingTableOfContents'),
+      drawer.querySelector('#DrawerTableOfContents')
+    ];
+    const getListDepth = (list, root) => {
+      let depth = 1;
+      let parentList = list.parentElement?.closest('ul, ol');
+
+      while (parentList && root.contains(parentList)) {
+        depth += 1;
+        parentList = parentList.parentElement?.closest('ul, ol');
+      }
+
+      return depth;
+    };
+    const maxDepth = Math.max(
+      1,
+      ...[...sourceToc.querySelectorAll('ul, ol')]
+        .map((list) => getListDepth(list, sourceToc))
+    );
+    const depthControls = [];
+    let currentDepth = maxDepth;
+
+    const applyTocDepth = () => {
+      tocRoots.forEach((root) => {
+        root.querySelectorAll('ul, ol').forEach((list) => {
+          list.hidden = getListDepth(list, root) > currentDepth;
+        });
+      });
+
+      const nextDepth = currentDepth >= maxDepth ? 1 : currentDepth + 1;
+      const nextAction = nextDepth === 1
+        ? '仅显示第 1 级'
+        : `展开至第 ${nextDepth} 级`;
+
+      depthControls.forEach((button) => {
+        button.querySelector('.toc-depth-control__badge').textContent = currentDepth;
+        button.disabled = maxDepth <= 1;
+        button.setAttribute(
+          'aria-label',
+          `目录当前展开至第 ${currentDepth} 级；点击后${nextAction}`
+        );
+        button.title = `当前第 ${currentDepth} 级；点击后${nextAction}`;
+      });
+    };
+
+    const createDepthControl = () => {
+      const button = document.createElement('button');
+      button.className = 'toc-depth-control';
+      button.type = 'button';
+      button.innerHTML = `
+        <span class="toc-depth-control__label">层级</span>
+        <span class="toc-depth-control__badge" aria-hidden="true"></span>
+      `;
+      button.addEventListener('click', () => {
+        currentDepth = currentDepth >= maxDepth ? 1 : currentDepth + 1;
+        applyTocDepth();
+      });
+      depthControls.push(button);
+      return button;
+    };
+
+    desktopToc.querySelector('.toc-depth-control-slot')
+      .appendChild(createDepthControl());
+    drawer.querySelector('.toc-depth-control-slot')
+      .appendChild(createDepthControl());
+    applyTocDepth();
 
     const closeButton = drawer.querySelector('.toc-drawer__close');
     const drawerPanel = drawer.querySelector('.toc-drawer__panel');
